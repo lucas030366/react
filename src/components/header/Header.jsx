@@ -19,6 +19,12 @@ export default () =>
             <li className="nav-item">
               <Link className="nav-link" to="hooks">Hooks</Link>
             </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="location">Location</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="redux">Redux</Link>
+            </li>
           </ul>
         </div>
       </div>

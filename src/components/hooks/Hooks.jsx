@@ -4,24 +4,29 @@ import axios from "axios"
 
 export default _ => {
   const [repositories, setRepositories] = useState([])
-  const [data, setData] = useState({nome: ""})
+  const [data, setData] = useState({ nome: "" })
 
-  useEffect(async () => {
-    const url = "https://api.github.com/users/lucas030366/repos"
+  useEffect(() => {
+    (async () => {
+      const url = "https://api.github.com/users/lucas030366/repos"
 
-    try {
-      const response = await axios.get(url)
+      try {
+        const response = await axios.get(url)
+        return setRepositories(response.data)
+      } catch (error) {
+        console.log(error.message)
+      }
+    })();
 
-      return setRepositories(response.data)
-    } catch (error) {
-      console.log(error.message)
-    }
   }, []) //[] vazio = chama uma vez, ao montar
 
-  useEffect(async () => {
-    const filter = repositories.filter(el => el.favorite)
+  useEffect(() => {
+    function fetchData() {
+      const filter = repositories.filter(el => el.favorite)
 
-    document.title = `${filter.length} favoritos`
+      document.title = `${filter.length} favoritos`
+    }
+    fetchData()
 
   }, [repositories]) //[] não vazio = chama quando atualizar
 
@@ -31,8 +36,8 @@ export default _ => {
     return setRepositories(copy)
   }
 
-  const updateName = (e) => {    
-    const nome = {nome: e.target.value} 
+  const updateName = (e) => {
+    const nome = { nome: e.target.value }
 
     setData(nome)
   }
@@ -55,9 +60,9 @@ export default _ => {
           })
         }
       </ul>
-      
+
       <h3>{data.nome}</h3>
-      <input type="text" value={data.nome } onChange={e => updateName(e)}/>
+      <input type="text" value={data.nome} onChange={e => updateName(e)} />
 
     </div>
   )
