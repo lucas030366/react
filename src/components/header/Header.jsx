@@ -25,6 +25,9 @@ export default () =>
             <li className="nav-item">
               <Link className="nav-link" to="redux">Redux</Link>
             </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="form">Formulário</Link>
+            </li>
           </ul>
         </div>
       </div>
