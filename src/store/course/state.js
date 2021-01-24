@@ -1,4 +1,4 @@
-const INITIAL_STATE = {
+const state = {
   active_lesson: {},
   active_module: {},
   modules: [
@@ -21,15 +21,4 @@ const INITIAL_STATE = {
   ]
 }
 
-export default function course (state = INITIAL_STATE, actions) {
-
-  if (actions.type == "TOGGLE_LESSON") {
-    return {
-      ...state,
-      active_lesson: actions.lesson,
-      active_module: actions.module,
-    }
-  }
-
-  return state
-}
+export default state

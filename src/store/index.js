@@ -1,7 +1,16 @@
-import { createStore } from "redux"
+import { createStore, combineReducers } from "redux"
+import course_reducer from "../store/course/mutations"
 
-import root_reducers from "./reducers"
+const { course } = course_reducer
 
-const store = createStore(root_reducers)
+const root_reducers = combineReducers({
+  course
+})
 
-export default store
+export default createStore(root_reducers)
+
+
+
+
+
+
